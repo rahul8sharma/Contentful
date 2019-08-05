@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Recipes</h1>
+
+<table style="width:100%">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Photo</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @recipes.each do |recipe| %>
+      <tr>
+        <td><%= link_to "#{recipe.title rescue ''}", recipe_path(recipe.id) %></td>
+        <td><%= image_tag((recipe.photo.url rescue ''), size: "200x100", alt: "Recipe Photo") %></td>
+        <td><%= link_to 'Show', recipe_path(recipe.id) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<style>
+  table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+  }
+  th, td {
+    padding: 5px;
+  }
+  th {
+    text-align: left;
+  }
+</style>

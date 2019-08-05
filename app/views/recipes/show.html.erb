@@ -1,0 +1,36 @@
+<table style="width:100%">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Chef Name</th>
+      <th>List of Tags</th>
+      <th>Description</th>
+      <th>Photo</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td><%= @recipe.title rescue '' %></td>
+      <td><%= @recipe.chef.name rescue '' %></td>
+      <td><%= @recipe.tags.map { |tag| tag.name }.join(', ') rescue '' %></td>
+      <td><%= @recipe.description.html_safe rescue '' %></td>
+      <td><%= image_tag((@recipe.photo.url rescue ''), size: "200x100", alt: "Recipe Photo") %></td>
+    </tr>
+  </tbody>
+</table>
+
+<%= link_to 'Back', recipes_path %>
+
+<style>
+  table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+  }
+  th, td {
+    padding: 5px;
+  }
+  th {
+    text-align: left;
+  }
+</style>
